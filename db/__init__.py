@@ -1,5 +1,5 @@
 DB_ID = "root"
-DB_PW = "1234"
+DB_PW = "root"
 DB_HOST = "localhost"
-DB_PORT = 3306
+DB_PORT = 2204
 DB = "cafe_inventory"
