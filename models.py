@@ -28,3 +28,8 @@ class Product(Base):
     size = Column(ENUM('small', 'large'))
 
 
+class Token(Base):
+    __tablename__ = "token"
+    user_id = Column(Integer, primary_key=True)
+    access_token = Column(String(255), nullable=False)
+    created_at = Column(DateTime(timezone=True))
