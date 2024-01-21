@@ -4,6 +4,7 @@ from typing import Optional
 
 
 class Product(BaseModel):
+    id: int = Field(description="index")
     user_id: int = Field(description="유저 id")
     category: str = Field(description="카테고리")
     price: str = Field(description="가격")
@@ -30,3 +31,5 @@ class Product(BaseModel):
                 "size": "small"
             }
         }
+
+
