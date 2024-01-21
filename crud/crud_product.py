@@ -96,6 +96,27 @@ def search_by_initials(keyword, data):
     return result
 
 
+"""
+product like search method
+"""
+
+
 def read_product_name(db: Session, product_name: str):
-    result = search_by_initials(product_name, db.query(models.Product).all())
-    return result
+    return search_by_initials(product_name, db.query(models.Product).all())
+
+
+
+"""
+prodcut cursor based pagination method
+"""
+
+
+def product_pagination(db: Session, user_id: int, cursor: int, limit: int):
+    return (
+        db.query(models.Product)
+        .filter(models.Product.user_id == user_id)
+        .filter(models.Product.id > cursor)
+        .limit(limit)
+        .with_entities(models.Product.category, models.Product.name)
+        .all()
+    )

@@ -7,7 +7,7 @@ from starlette import status
 from datetime import datetime
 
 import models
-from crud.crud_product import create_product, update_product, read_product_name
+from crud.crud_product import create_product, update_product, read_product_name, product_pagination
 from core.auth.jwt import encode_jwt
 from db.database import engine
 from schemas import product_schema
@@ -58,15 +58,22 @@ async def product_update(
     return update_product(db, product)
 
 
-@router.get("/user_id/{user_id}", response_model=product_schema.Product)
-async def product_get(user_id: str,  db: Session = Depends(get_db)):
+@router.get("/user_id/{user_id}/cursor/{cursor}/limit/{limit}", response_model=product_schema.Product)
+async def product_get(user_id: int, cursor: int, limit: int, db: Session = Depends(get_db)):
     """
     `상품 조회`
     """
+    content = product_pagination(db, user_id, cursor, limit)
+    if len(content):
+        product_info = {
+            f"{i + 1}": {"category": content[i][0], "name": content[i][1]}
+            for i in range(len(content))
+        }
+        if len(product_info):
+            return JSONResponse(content=jsonable_encoder(product_info))
+    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No data")
 
-    # content = product_schema.Product
 
-    return 0
 
 
 @router.get("/product_name/{product_name}")
