@@ -8,7 +8,7 @@ product create method
 """
 
 
-def create_product(db: Session, product: product_schema.Product):
+def create_product(db: Session, product: product_schema.CreateProduct):
     db_product = models.Product(
         user_id=product.user_id,
         category=product.category,
@@ -60,8 +60,10 @@ def update_product(db: Session, product: product_schema.Product):
     except Exception as e:
         if hasattr(e, "code"):
             if e.code == "f405":
+                print(e.code)
                 return {"invalid sql": str(e)}
             else:
+                print(e.code)
                 return {"fail": str(e)}
 
 
@@ -101,9 +103,10 @@ product like search method
 """
 
 
-def read_product_name(db: Session, product_name: str):
-    return search_by_initials(product_name, db.query(models.Product).all())
-
+def read_product_name(db: Session, user_id: int, product_name: str):
+    return search_by_initials(product_name, db.query(models.Product)
+                              .filter(models.Product.user_id == user_id)
+        .all())
 
 
 """
@@ -120,3 +123,35 @@ def product_pagination(db: Session, user_id: int, cursor: int, limit: int):
         .with_entities(models.Product.category, models.Product.name)
         .all()
     )
+
+
+"""
+product detail method
+"""
+
+
+def product_detail(db: Session, user_id: int, product_id: int):
+    return (
+        db.query(models.Product)
+        .filter(
+            models.Product.user_id == user_id,
+            models.Product.id == product_id
+        )
+        .all()
+    )
+
+
+"""
+product delete method
+"""
+
+
+def delete_product(db: Session, user_id: int, product_id: int):
+    db.query(models.Product).filter(
+            models.Product.user_id == user_id,
+            models.Product.id == product_id
+        ).delete()
+    db.commit()
+
+    return {"success": "Product delete"}
+

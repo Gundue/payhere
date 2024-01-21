@@ -52,3 +52,10 @@ def read_token_chk(db: Session, access_token: str):
             )
             .first()
         )
+
+
+def delete_token(db: Session, access_token:str):
+    db.query(models.Token).filter(models.Token.access_token == access_token).delete()
+    db.commit()
+
+    return {"success": "Token delete"}
