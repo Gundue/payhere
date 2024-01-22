@@ -5,6 +5,8 @@
 - python 3.9
 - mysql 5.7
 
+## API 명세서
+
 |구분|메서드|요청 URL|
 |------|---|---|
 |회원가입|post|/user/create|
@@ -18,4 +20,5 @@
 |등록 상품 검색|get|/product/user_id/{user_id}/product_name/{product_name}|
 
 ## ERD
+
 ![ERD](https://github.com/Gundue/restapi/assets/66405643/67ecb7a8-f937-4d75-8df4-22ae1772d78d)
