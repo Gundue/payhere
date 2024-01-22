@@ -22,3 +22,14 @@
 ## ERD
 
 ![ERD](https://github.com/Gundue/restapi/assets/66405643/67ecb7a8-f937-4d75-8df4-22ae1772d78d)
+
+## Docker 실행 방법
+```
+docker build -t cafe_server .
+```
+
+
+
+## 프로젝트 설정
+### 1. 의존성관리
+팀원간의 협업을 위해 Poetry를 사용하여 의존성을 해결하고 프로젝트의 가상환경을 관리.
