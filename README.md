@@ -1,12 +1,12 @@
 # payhere - 카페 관리 프로그램
-<br/>
+
 ## Skills
 - python 3.9
 - fastapi=0.109.0
 - mysql 5.7
-<br/>
+
 ## API 명세서
-<br/>
+
 |구분|메서드|요청 URL|
 |------|---|---|
 |회원가입|post|/user/create|
@@ -18,7 +18,7 @@
 |등록 상품 리스트|get|/product/user_id/{user_id}/cursor/{cursor}/limit/{limit}|
 |등록 상품 상세 조회|get|/product/user_id/{user_id}/product_id/{product_id}|
 |등록 상품 검색|get|/product/user_id/{user_id}/product_name/{product_name}|
-<br/>
+
 ## ERD
 ![ERD](https://github.com/Gundue/restapi/assets/66405643/67ecb7a8-f937-4d75-8df4-22ae1772d78d)
 
@@ -31,7 +31,7 @@
 ### TOKEN TALBE
 - 유저의 Index값, access 토큰, 저장시각을 저장
   
-<br/>
+
 ## 프로젝트 Docker 실행 방법
 - 도커 이미지 빌드
 ```
@@ -47,7 +47,7 @@ https://hub.docker.com/repository/docker/gunw/cafe_server/general
 ```
 docker pull gunw/cafe_server:latest
 ```
-<br/>
+
 ## 프로젝트 관리
 ### 브랜치 관리
 개인 브런치를 생성하여 개별적으로 작업후, 기능 완료 시 main 브런치에 pull request 생성
