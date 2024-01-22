@@ -28,13 +28,18 @@ async def user_create(user: user_schema.User,  db: Session = Depends(get_db)):
     `회원 가입`
     """
     get_user = read_user(db, phone=user.phone)
-    if get_user is None and validate_phone_number(user.phone):
-        hash_pw = bcrypt.hashpw(user.password.encode("utf-8"), bcrypt.gensalt())
-        user.password = hash_pw
-        create_user(db, user)
-        return custom_response(code=200, message="Success Create")
-    else:
-        return custom_response(code=400, message="Invalid User")
+    # 전화번호가 이미 존재할 시
+    if get_user is not None:
+        return custom_response(code=400, message="User already exists")
+
+    # 전화번호 유효성 검사
+    if not validate_phone_number(user.phone):
+        return custom_response(code=400, message="Invalid phone number")
+
+    hash_pw = bcrypt.hashpw(user.password.encode("utf-8"), bcrypt.gensalt())
+    user.password = hash_pw
+    create_user(db, user)
+    return custom_response(code=200, message="Success Create")
 
 
 @router.post("/login")

@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 class Token(BaseModel):
     user_id: int = Field(description="User Idx")
     access_token: str = Field(description="JWT Token")
-    created_at: datetime = Field(description="Token generate time")
+    created_at: datetime = datetime.now()
 
     class Config:
         orm_mode = True

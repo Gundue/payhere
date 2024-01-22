@@ -27,7 +27,7 @@ class Product(BaseModel):
                 "name": "슈크림 라떼",
                 "description": "슈크림을 올린 라떼",
                 "barcode": "01001010110",
-                "expiration_date": "2024-01-22 10:00:00",
+                "expiration_date": datetime.now(),
                 "size": "small"
             }
         }
@@ -56,7 +56,7 @@ class CreateProduct(BaseModel):
                 "name": "슈크림 라떼",
                 "description": "슈크림을 올린 라떼",
                 "barcode": "01001010110",
-                "expiration_date": "2024-01-22 10:00:00",
+                "expiration_date": datetime.now(),
                 "size": "small"
             }
         }

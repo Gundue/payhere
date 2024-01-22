@@ -95,7 +95,7 @@ def read_product_lists(db: Session, user_id: int, cursor: int, limit: int):
         .filter(models.Product.user_id == user_id)
         .filter(models.Product.id > cursor)
         .limit(limit)
-        .with_entities(models.Product.category, models.Product.name)
+        .with_entities(models.Product.id, models.Product.category, models.Product.name)
         .all()
     )
 
