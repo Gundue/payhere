@@ -130,7 +130,7 @@ def delete_product(db: Session, user_id: int, product_id: int):
 
     return {"success": "Product delete"}
 
-
+# 한글 초성 추출
 def extract_initials(char):
     if '가' <= char <= '힣':
         char_code = ord(char) - 44032
@@ -140,7 +140,7 @@ def extract_initials(char):
     else:
         return char
 
-
+# 초성이 포함된 항목 반환
 def search_by_initials(keyword, data):
     keyword_initials = ''.join([extract_initials(char) for char in keyword])
     result = [item for item in data if keyword_initials in ''.join([extract_initials(char) for char in item.name])]
