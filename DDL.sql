@@ -1,42 +1,35 @@
-create table cafe_inventory.product
-(
-    id             int auto_increment
-        primary key,
-    user_id        int                     null,
-    category       varchar(50)             null,
-    price          varchar(10)             null,
-    cost           varchar(10)             null,
-    name           varchar(50)             null,
-    description    varchar(100)            null,
-    barcode        varchar(20)             null,
-    expration_date datetime                null,
-    size           enum ('small', 'large') null,
-    constraint product_ibfk_1
-        foreign key (user_id) references cafe_inventory.user (id)
-)
-    charset = utf8;
+CREATE DATABASE cafe DEFAULT CHARACTER SET utf8mb4;
 
-create index user_id
-    on cafe_inventory.product (user_id);
+-- USER TABLE
+CREATE TABLE cafe.user (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  phone varchar(11),
+  password varchar(128),
+  name varchar(10),
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-create table cafe_inventory.user
-(
-    id       int auto_increment
-        primary key,
-    phone    varchar(11)  null,
-    password varchar(128) null,
-    name     varchar(10)  null
-)
-    charset = utf8;
+-- TOKEN TABLE
+CREATE TABLE cafe.token (
+  user_id int(11) NOT NULL AUTO_INCREMENT,
+  access_token varchar(255) NOT NULL,
+  created_at datetime DEFAULT NULL,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-create table cafe_inventory.token
-(
-    user_id      int auto_increment
-        primary key,
-    access_token varchar(255) not null,
-    created_at   datetime     null
-)
-    charset = utf8;
-
-
-
+-- PRODUCT TABLE
+CREATE TABLE cafe.product (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  category varchar(50),
+  price varchar(10),
+  cost varchar(10),
+  name varchar(50),
+  description varchar(100),
+  barcode varchar(20),
+  expiration_date datetime,
+  size enum('small','large'),
+  PRIMARY KEY (id),
+  KEY user_id (user_id),
+  CONSTRAINT product_ibfk_1 FOREIGN KEY (user_id) REFERENCES user (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

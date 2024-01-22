@@ -77,7 +77,7 @@ async def product_get_lists(
         content = read_product_lists(db, user_id, cursor, limit)
         product_data = []
         for item in content:
-            product_data.append({"category": item[0], "name": item[1]})
+            product_data.append({"id": item[0], "category": item[1], "name": item[2]})
         response_data = {"products": product_data}
         return custom_response(code=200, message="Product list success", data=response_data)
     else:

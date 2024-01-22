@@ -1,11 +1,10 @@
-from datetime import datetime
 from pydantic import BaseModel, Field
 
 
 class User(BaseModel):
-    phone: str = Field(description="phone number")
-    password: str = Field(description="user password")
-    name: str = Field(description="user name")
+    phone: str = Field(description="Phone Number")
+    password: str = Field(description="User password")
+    name: str = Field(description="User name")
 
     class Config:
         orm_mode = True
@@ -13,15 +12,15 @@ class User(BaseModel):
         schema_extra = {
             "example": {
                 "phone": "01011111111",
-                "password": "dasjhkjajhdl1!&dasda4856",
-                "name": "tom"
+                "password": "1234",
+                "name": "park"
             }
         }
 
 
 class UserLogin(BaseModel):
-    phone: str = Field(description="phone number")
-    password: str = Field(description="login password")
+    phone: str = Field(description="Phone Number")
+    password: str = Field(description="User password")
 
     class Config:
         orm_mode = True
@@ -29,6 +28,6 @@ class UserLogin(BaseModel):
         schema_extra = {
             "example": {
                 "phone": "01011111111",
-                "password": "dasjhkjajhdl1!&dasda4856",
+                "password": "1234",
             }
         }
