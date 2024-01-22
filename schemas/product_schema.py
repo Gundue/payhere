@@ -1,62 +1,62 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
-from typing import Optional
 
 
 class Product(BaseModel):
-    id: int = Field(description="index")
-    user_id: int = Field(description="유저 id")
-    category: str = Field(description="카테고리")
-    price: str = Field(description="가격")
-    cost: str = Field(description="원가")
-    name: str = Field(description="상품명")
-    description: str = Field(description="상품 설명")
-    barcode: str = Field(description="상품 설명")
-    expiration_date: datetime = Field(description="유통기한")
-    size: str = Field(description="상품 크기")
+    id: int = Field(description="Idx")
+    user_id: int = Field(description="User Idx")
+    category: str = Field(description="Product category")
+    price: str = Field(description="Product price")
+    cost: str = Field(description="Product cost")
+    name: str = Field(description="Product name")
+    description: str = Field(description="Product description")
+    barcode: str = Field(description="Product barcode")
+    expiration_date: datetime = Field(description="Product Expiration date")
+    size: str = Field(description="Product size")
 
     class Config:
         orm_mode = True
 
         schema_extra = {
             "example": {
-                "user_id": 4,
-                "category": "커피",
-                "price": "4500",
+                "id": 1,
+                "user_id": 1,
+                "category": "음료",
+                "price": "6000",
                 "cost": "2000",
-                "name": "아메리카노",
-                "description": "케냐 원두로 만든 아메리카노",
-                "barcode": "3243565165",
-                "expiration_date": "2024-12-31",
+                "name": "슈크림 라떼",
+                "description": "슈크림을 올린 라떼",
+                "barcode": "01001010110",
+                "expiration_date": "2024-01-22 10:00:00",
                 "size": "small"
             }
         }
 
 
 class CreateProduct(BaseModel):
-    user_id: int = Field(description="유저 id")
-    category: str = Field(description="카테고리")
-    price: str = Field(description="가격")
-    cost: str = Field(description="원가")
-    name: str = Field(description="상품명")
-    description: str = Field(description="상품 설명")
-    barcode: str = Field(description="상품 설명")
-    expiration_date: datetime = Field(description="유통기한")
-    size: str = Field(description="상품 크기")
+    user_id: int = Field(description="User Idx")
+    category: str = Field(description="Product category")
+    price: str = Field(description="Product price")
+    cost: str = Field(description="Product cost")
+    name: str = Field(description="Product name")
+    description: str = Field(description="Product description")
+    barcode: str = Field(description="Product barcode")
+    expiration_date: datetime = Field(description="Product Expiration date")
+    size: str = Field(description="Product size")
 
     class Config:
         orm_mode = True
 
         schema_extra = {
             "example": {
-                "user_id": 4,
-                "category": "커피",
-                "price": "4500",
+                "user_id": 1,
+                "category": "음료",
+                "price": "6000",
                 "cost": "2000",
-                "name": "아메리카노",
-                "description": "케냐 원두로 만든 아메리카노",
-                "barcode": "3243565165",
-                "expiration_date": "2024-12-31",
+                "name": "슈크림 라떼",
+                "description": "슈크림을 올린 라떼",
+                "barcode": "01001010110",
+                "expiration_date": "2024-01-22 10:00:00",
                 "size": "small"
             }
         }
