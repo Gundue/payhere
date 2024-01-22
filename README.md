@@ -17,3 +17,5 @@
 |등록 상품 상세 조회|get|/product/user_id/{user_id}/product_id/{product_id}|
 |등록 상품 검색|get|/product/user_id/{user_id}/product_name/{product_name}|
 
+## ERD
+![ERD](https://github.com/Gundue/restapi/assets/66405643/67ecb7a8-f937-4d75-8df4-22ae1772d78d)
