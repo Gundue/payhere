@@ -45,7 +45,7 @@ def update_token(db: Session, token: token_schema.Token):
     return {"success": "Token updated successfully"}
 
 
-def read_token_chk(db: Session, access_token: str):
+def find_token_exists(db: Session, access_token: str):
     return (db.query(models.Token)
             .filter(
                 (models.Token.access_token == access_token)

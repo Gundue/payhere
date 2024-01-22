@@ -3,7 +3,7 @@ from schemas import user_schema
 import models
 
 
-def create_user(db:Session, user: user_schema.User):
+def create_user(db: Session, user: user_schema.User):
     db_user = models.User(
         phone=user.phone,
         password=user.password,

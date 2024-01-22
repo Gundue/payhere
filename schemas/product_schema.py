@@ -12,7 +12,7 @@ class Product(BaseModel):
     name: str = Field(description="상품명")
     description: str = Field(description="상품 설명")
     barcode: str = Field(description="상품 설명")
-    expration_date: datetime = Field(description="유통기한")
+    expiration_date: datetime = Field(description="유통기한")
     size: str = Field(description="상품 크기")
 
     class Config:
@@ -27,7 +27,7 @@ class Product(BaseModel):
                 "name": "아메리카노",
                 "description": "케냐 원두로 만든 아메리카노",
                 "barcode": "3243565165",
-                "expration_date": "2024-12-31",
+                "expiration_date": "2024-12-31",
                 "size": "small"
             }
         }
@@ -41,7 +41,7 @@ class CreateProduct(BaseModel):
     name: str = Field(description="상품명")
     description: str = Field(description="상품 설명")
     barcode: str = Field(description="상품 설명")
-    expration_date: datetime = Field(description="유통기한")
+    expiration_date: datetime = Field(description="유통기한")
     size: str = Field(description="상품 크기")
 
     class Config:
@@ -56,7 +56,7 @@ class CreateProduct(BaseModel):
                 "name": "아메리카노",
                 "description": "케냐 원두로 만든 아메리카노",
                 "barcode": "3243565165",
-                "expration_date": "2024-12-31",
+                "expiration_date": "2024-12-31",
                 "size": "small"
             }
         }
