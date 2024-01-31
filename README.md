@@ -30,18 +30,39 @@
 
 ### TOKEN TALBE
 - 유저의 Index값, access 토큰, 저장시각을 저장
-  
+
+## MySQL 실행
+- MySQL 5.7 이미지 pull
+```
+docker pull mysql:5.7
+```
+- MySQL 이미지 실행
+```
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=1234 -d -p 3306:3306 mysql:5.7
+```
+- MySQL 도커 컨테이너 접속
+```
+docker exec -it mysql-container bash
+```
+- MySQL 로그인
+```
+mysql -u root -p
+```
+- MySQL 데이터베이스 생성
+```
+create database cafe;
+```
 
 ## 프로젝트 Docker 실행 방법
 - 도커 이미지 빌드
 ```
-docker build -t cafe_server .
+docker build -t gunw/cafe_server .
 ```
 - 도커 서버 실행
 ```
-docker run -p 8000:8000 cafe_server
+docker run -p 8000:8000 gunw/cafe_server
 ```
-도커 이미지 주소
+- 도커 이미지 주소
 https://hub.docker.com/repository/docker/gunw/cafe_server/general
 - 도커 이미지 pull
 ```
